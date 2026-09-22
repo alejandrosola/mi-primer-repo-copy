@@ -12,6 +12,14 @@
       <p>Lo que se viene en el curso</p>
     </header>
 
+    <div class="buscador">
+      <input
+        type="text"
+        id="buscador-input"
+        placeholder="Buscar un evento..."
+      />
+    </div>
+
     <main>
       <article class="evento">
         <div class="fecha">
@@ -43,5 +51,19 @@
         </div>
       </article>
     </main>
+
+    <script>
+      const buscador = document.getElementById("buscador-input");
+      const eventos = document.querySelectorAll(".evento");
+
+      buscador.addEventListener("input", () => {
+        const texto = buscador.value.toLowerCase();
+
+        eventos.forEach((evento) => {
+          const titulo = evento.querySelector("h2").textContent.toLowerCase();
+          evento.style.display = titulo.includes(texto) ? "flex" : "none";
+        });
+      });
+    </script>
   </body>
 </html>
